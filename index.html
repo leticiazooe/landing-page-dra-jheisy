@@ -62,12 +62,15 @@
   </header>
 
   <main id="conteudo">
-    <section class="hero section" id="inicio">
-      <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+    <section class="hero section hero--photo" id="inicio">
+      <div class="hero__photo-bg" aria-hidden="true"></div>
+      <div class="hero__photo-overlay" aria-hidden="true"></div>
+      <div class="hero__photo-vignette" aria-hidden="true"></div>
 
-      <div class="container hero__grid">
-        <div class="hero__content" data-reveal>
+      <div class="container hero__grid hero__grid--photo">
+        <div class="hero__photo-space" aria-hidden="true"></div>
+
+        <div class="hero__content hero__content--photo" data-reveal>
           <p class="eyebrow">Dra. Jheisy Rodrigues · Cirurgiã-dentista</p>
           <h1>O cuidado com seu sorriso começa com uma <em>conversa.</em></h1>
           <p class="hero__lede">Conheça a Dra. Jheisy Rodrigues e entre em contato para solicitar seu agendamento com clareza, acolhimento e atenção.</p>
@@ -88,23 +91,11 @@
             <span>Atendimento humano</span>
           </div>
         </div>
+      </div>
 
-        <div class="portrait-stage" data-reveal data-reveal-delay="120">
-          <div class="portrait-stage__halo" aria-hidden="true"></div>
-          <div class="portrait-stage__frame">
-            <div class="portrait-placeholder" role="img" aria-label="Espaço reservado para fotografia real da Dra. Jheisy Rodrigues">
-              <div class="portrait-placeholder__line" aria-hidden="true"></div>
-              <span class="portrait-placeholder__kicker">Imagem principal</span>
-              <strong>Fotografia real<br>da Dra. Jheisy</strong>
-              <small>substituir antes da publicação</small>
-            </div>
-            <div class="portrait-stage__caption">
-              <span class="caption-mark" aria-hidden="true">✦</span>
-              <p>Delicadeza na expressão.<br><strong>Precisão no cuidado.</strong></p>
-            </div>
-          </div>
-          <div class="portrait-stage__orbit" aria-hidden="true">JHEISY • RODRIGUES •</div>
-        </div>
+      <div class="hero__photo-detail" aria-hidden="true">
+        <span></span>
+        <span>Jheisy Rodrigues</span>
       </div>
     </section>
 
