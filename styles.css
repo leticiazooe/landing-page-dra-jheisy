@@ -1426,3 +1426,274 @@ textarea {
     transform: none;
   }
 }
+
+/* =========================================================
+   HERO FOTOGRÁFICO — Dra. Jheisy
+   Foto de referência fornecida para o projeto.
+   O gradiente preserva legibilidade sem apagar a imagem.
+   ========================================================= */
+
+.hero--photo {
+  min-height: calc(100svh - 122px);
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 72px;
+  padding-bottom: 96px;
+  background: #FCF8F6;
+}
+
+.hero--photo::before {
+  content: none;
+}
+
+.hero__photo-bg,
+.hero__photo-overlay,
+.hero__photo-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__photo-bg {
+  z-index: 0;
+  background-image: url("assets/jheisy-hero-reference.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 118%;
+  background-position: left 34% center;
+  filter: saturate(.92) contrast(.97);
+  transform: scale(1.015);
+  transform-origin: left center;
+}
+
+.hero__photo-overlay {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(252, 248, 246, .02) 0%,
+      rgba(252, 248, 246, .08) 27%,
+      rgba(252, 248, 246, .38) 42%,
+      rgba(252, 248, 246, .82) 58%,
+      rgba(252, 248, 246, .97) 72%,
+      #FCF8F6 100%
+    );
+}
+
+.hero__photo-vignette {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(87, 52, 71, .08), transparent 22%),
+    radial-gradient(circle at 15% 52%, transparent 0 30%, rgba(87, 52, 71, .05) 72%, transparent 100%);
+  mix-blend-mode: multiply;
+}
+
+.hero__grid--photo {
+  position: relative;
+  z-index: 3;
+  width: min(calc(100% - 48px), var(--container));
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(460px, .86fr);
+  gap: clamp(44px, 7vw, 118px);
+  align-items: center;
+}
+
+.hero__content--photo {
+  grid-column: 2;
+  max-width: 660px;
+  justify-self: end;
+}
+
+.hero__content--photo .eyebrow {
+  color: #9F6074;
+}
+
+.hero__content--photo h1 {
+  max-width: 680px;
+  font-size: clamp(60px, 5.9vw, 94px);
+  text-wrap: balance;
+}
+
+.hero__content--photo .hero__lede {
+  max-width: 570px;
+}
+
+.hero__content--photo .hero__trust {
+  border-top-color: rgba(87, 52, 71, .16);
+}
+
+.hero__photo-detail {
+  position: absolute;
+  z-index: 3;
+  left: max(24px, calc((100vw - var(--container)) / 2));
+  bottom: 26px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, .86);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 16px rgba(47, 32, 40, .36);
+}
+
+.hero__photo-detail span:first-child {
+  width: 34px;
+  height: 1px;
+  background: rgba(255, 255, 255, .72);
+}
+
+@media (max-width: 1040px) {
+  .hero__grid--photo {
+    grid-template-columns: minmax(280px, .88fr) minmax(410px, 1fr);
+    gap: 34px;
+  }
+
+  .hero__photo-bg {
+    background-size: auto 112%;
+    background-position: left 29% center;
+  }
+
+  .hero__photo-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(252, 248, 246, .02) 0%,
+        rgba(252, 248, 246, .18) 31%,
+        rgba(252, 248, 246, .72) 49%,
+        rgba(252, 248, 246, .96) 66%,
+        #FCF8F6 100%
+      );
+  }
+}
+
+@media (max-width: 900px) {
+  .hero--photo {
+    min-height: 820px;
+    align-items: flex-end;
+    padding-top: 0;
+    padding-bottom: 66px;
+  }
+
+  .hero__grid--photo {
+    width: min(calc(100% - 32px), var(--container));
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero__photo-space {
+    display: none;
+  }
+
+  .hero__content--photo {
+    grid-column: 1;
+    max-width: 680px;
+    justify-self: stretch;
+    margin-top: 330px;
+    padding: 38px 0 0;
+  }
+
+  .hero__photo-bg {
+    background-size: auto 78%;
+    background-position: center top;
+    transform: none;
+    filter: saturate(.92) contrast(.98);
+  }
+
+  .hero__photo-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(252, 248, 246, .00) 0%,
+        rgba(252, 248, 246, .06) 24%,
+        rgba(252, 248, 246, .42) 43%,
+        rgba(252, 248, 246, .90) 58%,
+        #FCF8F6 70%,
+        #FCF8F6 100%
+      );
+  }
+
+  .hero__photo-vignette {
+    background:
+      linear-gradient(180deg, rgba(87, 52, 71, .06), transparent 22%),
+      linear-gradient(90deg, rgba(87, 52, 71, .05), transparent 22%, transparent 78%, rgba(87, 52, 71, .05));
+  }
+
+  .hero__photo-detail {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero--photo {
+    min-height: 760px;
+    padding-bottom: 54px;
+  }
+
+  .hero__content--photo {
+    margin-top: 300px;
+    padding-top: 34px;
+  }
+
+  .hero__content--photo h1 {
+    max-width: 560px;
+    font-size: clamp(48px, 13.5vw, 66px);
+    line-height: .96;
+  }
+
+  .hero__content--photo .hero__lede {
+    max-width: 520px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hero__photo-bg {
+    background-size: auto 74%;
+    background-position: center top;
+  }
+
+  .hero__content--photo .hero__trust {
+    margin-top: 30px;
+    padding-top: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero--photo {
+    min-height: 720px;
+  }
+
+  .hero__content--photo {
+    margin-top: 275px;
+  }
+
+  .hero__photo-bg {
+    background-size: auto 69%;
+    background-position: center top;
+  }
+
+  .hero__photo-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(252, 248, 246, 0) 0%,
+        rgba(252, 248, 246, .08) 26%,
+        rgba(252, 248, 246, .58) 43%,
+        rgba(252, 248, 246, .96) 57%,
+        #FCF8F6 66%,
+        #FCF8F6 100%
+      );
+  }
+
+  .hero__content--photo h1 {
+    font-size: clamp(46px, 13vw, 58px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__photo-bg {
+    transform: none;
+  }
+}
