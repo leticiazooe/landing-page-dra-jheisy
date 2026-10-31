@@ -1903,8 +1903,20 @@ textarea {
   position: relative;
   width: min(100%, 500px);
   justify-self: end;
-  transform: translate3d(0, var(--portrait-parallax, 0px), 0);
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate3d(0, calc(24px + var(--portrait-parallax, 0px)), 0);
   will-change: transform;
+  transition:
+    opacity .85s ease 180ms,
+    filter .9s ease 180ms,
+    transform 1.05s var(--ease-premium) 180ms;
+}
+
+.hero--premium.is-ready .hero__portrait {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, var(--portrait-parallax, 0px), 0);
 }
 
 .hero__portrait-frame {
