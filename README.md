@@ -1,54 +1,44 @@
 # Landing Page — Dra. Jheisy Rodrigues
 
-Landing page responsiva baseada no briefing fornecido para a Dra. Jheisy Rodrigues.
+Landing page responsiva da Dra. Jheisy Rodrigues.
+
+## Dados profissionais confirmados
+
+- Cirurgiã-dentista | USP.
+- CROSP 166519.
+- Áreas de atuação: Dentística restauradora e Próteses.
+- WhatsApp para agendamentos: +55 16 98855-7713.
+- Posicionamento: “Naturalidade e saúde para o seu sorriso”.
 
 ## Direção visual
 
-- Feminina, madura e editorial.
+- Feminina, madura, editorial e premium.
 - Paleta: marfim rosado, blush, rosa antigo, ameixa, champagne e grafite quente.
 - Tipografia: Instrument Serif para títulos e Manrope para interface/corpo.
-- Motion discreto com `IntersectionObserver`, respeitando `prefers-reduced-motion`.
-- Sem fotos genéricas, depoimentos inventados, números de registro, especialidades ou endereço não confirmados.
+- Motion design em HTML/CSS/JS puro: hero em camadas, image reveal, parallax leve, microinterações, reveals editoriais e suporte a `prefers-reduced-motion`.
+- Sem depoimentos inventados, garantias clínicas ou promessas de resultado.
 
 ## Arquivos
 
-- `index.html` — estrutura semântica e conteúdo.
-- `styles.css` — tokens, layout, responsividade e estados.
-- `app.js` — menu mobile, revelações suaves, cabeçalho e cópia da mensagem sugerida.
+- `index.html` — estrutura semântica, conteúdo e CTAs.
+- `styles.css` — tokens, layout, responsividade e motion system.
+- `app.js` — menu mobile, reveals, parallax, accordion e interações.
+- `assets/jheisy-hero-reference.jpg` — imagem atual do hero.
 
-## Dados que precisam ser confirmados antes da publicação
+## Dados que ainda precisam ser confirmados
 
-1. Nome profissional completo.
-2. CRO/UF.
-3. Formação e qualificações.
-4. Serviços efetivamente oferecidos.
-5. Público atendido.
-6. Endereço e horários.
-7. Número/canal de WhatsApp.
-8. Fotografias reais da Dra. Jheisy e do consultório.
-9. Fluxo real do primeiro atendimento.
-10. Avaliações/depoimentos, apenas se houver autorização e material real.
-
-## Como visualizar
-
-Abra `index.html` em um navegador moderno.
-
-Para uma prévia mais fiel durante desenvolvimento, rode um servidor local, por exemplo:
-
-```bash
-python -m http.server 8080
-```
-
-e acesse `http://localhost:8080`.
+1. Endereço do consultório.
+2. Horários de atendimento.
+3. Fluxo operacional definitivo do agendamento.
+4. Fotografias em alta resolução da Dra. Jheisy e do consultório.
+5. Avaliações/depoimentos, apenas se houver autorização e material real.
 
 ## Publicação
 
 Antes de publicar:
 
-- substituir os placeholders de fotografia;
-- remover a faixa “Prévia em validação”;
-- preencher apenas dados confirmados;
-- ativar o link real do WhatsApp;
-- revisar metadados SEO e compartilhamento;
-- conferir contraste e acessibilidade após inserir fotos reais;
-- validar o conteúdo com a profissional.
+- substituir a fotografia de referência por arquivo original em alta resolução;
+- revisar endereço e horários quando fornecidos;
+- revisar SEO e compartilhamento social;
+- conferir contraste após inserir as fotos finais;
+- validar o conteúdo final com a profissional.
