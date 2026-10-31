@@ -23,7 +23,7 @@ Landing page responsiva da Dra. Jheisy Rodrigues.
 - `index.html` — estrutura semântica, conteúdo e CTAs.
 - `styles.css` — tokens, layout, responsividade e motion system.
 - `app.js` — menu mobile, reveals, parallax, accordion e interações.
-- `assets/jheisy-hero-clean.webp` — imagem clean 16:9 usada no hero.
+- `assets/jheisy-hero.png` — imagem integral usada na hero, sem crop ou moldura.
 
 ## Dados que ainda precisam ser confirmados
 
