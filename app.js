@@ -6,7 +6,6 @@ const copyFeedback = document.querySelector("[data-copy-feedback]");
 const contactMessage = document.querySelector("#contactMessage");
 const year = document.querySelector("[data-year]");
 const hero = document.querySelector("[data-hero]");
-const heroPortrait = document.querySelector("[data-hero-portrait]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (year) year.textContent = new Date().getFullYear();
@@ -35,7 +34,7 @@ if (navToggle && nav) {
   });
 }
 
-/* Entrada do hero em camadas */
+/* Entrada premium do hero sem alterar escala ou enquadramento da foto */
 if (hero) {
   if (reduceMotion.matches) {
     hero.classList.add("is-ready");
@@ -46,7 +45,7 @@ if (hero) {
   }
 }
 
-/* Reveal editorial: alterna direção sem repetir o mesmo fade-up */
+/* Reveals editoriais */
 const revealItems = [...document.querySelectorAll("[data-reveal]")];
 
 revealItems.forEach((item, index) => {
@@ -60,51 +59,23 @@ revealItems.forEach((item, index) => {
 });
 
 if ("IntersectionObserver" in window && !reduceMotion.matches) {
-  const revealObserver = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
       });
     },
-    {
-      threshold: 0.14,
-      rootMargin: "0px 0px -7% 0px"
-    }
+    { threshold: 0.14, rootMargin: "0px 0px -7% 0px" }
   );
 
-  revealItems.forEach((item) => revealObserver.observe(item));
+  revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-/* Parallax leve: máximo de poucos pixels, sem bloquear o scroll */
-let parallaxFrame = null;
-
-const updateHeroParallax = () => {
-  parallaxFrame = null;
-  if (!hero || !heroPortrait || reduceMotion.matches || window.innerWidth < 901) {
-    if (heroPortrait) heroPortrait.style.setProperty("--portrait-parallax", "0px");
-    return;
-  }
-
-  const rect = hero.getBoundingClientRect();
-  const progress = Math.max(-1, Math.min(1, -rect.top / Math.max(rect.height, 1)));
-  const offset = Math.max(-18, Math.min(18, progress * -18));
-  heroPortrait.style.setProperty("--portrait-parallax", `${offset.toFixed(2)}px`);
-};
-
-const queueHeroParallax = () => {
-  if (parallaxFrame !== null) return;
-  parallaxFrame = requestAnimationFrame(updateHeroParallax);
-};
-
-updateHeroParallax();
-window.addEventListener("scroll", queueHeroParallax, { passive: true });
-window.addEventListener("resize", queueHeroParallax, { passive: true });
-
-/* Accordion com abertura/fechamento mais fluido */
+/* Accordion fluido */
 document.querySelectorAll(".accordion details").forEach((details) => {
   const summary = details.querySelector("summary");
   const content = details.querySelector(".accordion__content");
@@ -122,10 +93,7 @@ document.querySelectorAll(".accordion details").forEach((details) => {
           { opacity: 1, transform: "translateY(0)" },
           { opacity: 0, transform: "translateY(-8px)" }
         ],
-        {
-          duration: 260,
-          easing: "cubic-bezier(.22,.61,.36,1)"
-        }
+        { duration: 260, easing: "cubic-bezier(.22,.61,.36,1)" }
       );
 
       animation.addEventListener("finish", () => {
@@ -138,23 +106,21 @@ document.querySelectorAll(".accordion details").forEach((details) => {
           { opacity: 0, transform: "translateY(-10px)" },
           { opacity: 1, transform: "translateY(0)" }
         ],
-        {
-          duration: 380,
-          easing: "cubic-bezier(.16,1,.3,1)"
-        }
+        { duration: 380, easing: "cubic-bezier(.16,1,.3,1)" }
       );
     }
   });
 });
 
-/* Microinteração de ponteiro apenas em dispositivos precisos */
+/* Microinterações discretas em desktop */
 if (!reduceMotion.matches && window.matchMedia("(pointer: fine)").matches) {
   document.querySelectorAll(".about-card, .contact-card").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(900px) rotateX(${(-y * 1.2).toFixed(2)}deg) rotateY(${(x * 1.2).toFixed(2)}deg) translateY(-4px)`;
+      card.style.transform =
+        `perspective(900px) rotateX(${(-y * 1.2).toFixed(2)}deg) rotateY(${(x * 1.2).toFixed(2)}deg) translateY(-4px)`;
     });
 
     card.addEventListener("pointerleave", () => {
@@ -170,8 +136,6 @@ if (copyButton && copyFeedback && contactMessage) {
     try {
       await navigator.clipboard.writeText(text);
       copyFeedback.textContent = "Mensagem copiada.";
-      const arrow = copyButton.querySelector(".button__arrow");
-      if (arrow) arrow.textContent = "✓";
     } catch {
       contactMessage.focus();
       contactMessage.select();
@@ -181,8 +145,6 @@ if (copyButton && copyFeedback && contactMessage) {
 
     window.setTimeout(() => {
       copyFeedback.textContent = "";
-      const arrow = copyButton.querySelector(".button__arrow");
-      if (arrow) arrow.textContent = "↗";
     }, 2600);
   });
 }
