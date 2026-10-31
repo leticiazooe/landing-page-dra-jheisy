@@ -2101,3 +2101,60 @@ textarea {
   }
 }
 
+/* === HERO FULL-BLEED 16:9 FIX START === */
+
+/* Desktop: a própria hero assume a proporção da arte.
+   Assim jheisy-hero.png ocupa 100% da largura sem faixas laterais,
+   sem crop e sem moldura. */
+@media (min-width: 901px) {
+  .hero--premium {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .hero__grid--premium {
+    width: min(calc(100% - 48px), var(--container));
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+  }
+
+  .hero__content--premium {
+    padding-top: 0;
+  }
+
+  .hero__portrait--full {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__portrait-full-image {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Mobile continua mostrando a imagem inteira abaixo do texto. */
+@media (max-width: 900px) {
+  .hero--premium {
+    aspect-ratio: auto;
+  }
+
+  .hero__portrait-full-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+/* === HERO FULL-BLEED 16:9 FIX END === */
